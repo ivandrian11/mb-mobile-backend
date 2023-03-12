@@ -1,0 +1,5 @@
+app/settings.py
+app/__pycache__
+mobile/__pycache__
+mobile/api/__pycache__
+mobile/migrations/__pycache__

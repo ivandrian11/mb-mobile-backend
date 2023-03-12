@@ -1,0 +1,45 @@
+from django.urls import path
+
+from .views import (
+    CategoryListView,
+    PromoListView,
+    MentorListView,
+    RegisterView,
+    CourseListView,
+    MaterialListView,
+    ChangePasswordView,
+    ForgetPasswordView,
+    OrderListApiView,
+    OrderView,
+    UpdateOrderView,
+    ProjectListApiView,
+    ProjectView,
+    UpdateProjectView,
+    register_user,
+    login_user,
+    check_email
+)
+
+urlpatterns = [
+    path('category', CategoryListView.as_view(), name='api-category-list'),
+    path('promo', PromoListView.as_view(), name='api-promo-list'),
+    path('mentor', MentorListView.as_view(), name='api-mentor-list'),
+    path('course', CourseListView.as_view(), name='api-course-list'),
+    path('material', MaterialListView.as_view(), name='api-material-list'),
+    path('order', OrderView.as_view(), name='api-create_order-list'),
+    path('order/all', OrderListApiView.as_view(), name='api-order-list'),
+    path('order/<str:order_id>', UpdateOrderView.as_view(),
+         name='api-update_order-list'),
+    path('project', ProjectView.as_view(), name='api-create_project-list'),
+    path('project/all', ProjectListApiView.as_view(), name='api-project-list'),
+    path('project/<str:project_id>', UpdateProjectView.as_view(),
+         name='api-update_project-list'),
+    path('user/example', RegisterView.as_view(), name='api-example'),
+    path('user/register', register_user, name='api-register'),
+    path('user/login', login_user, name='api-login'),
+    path('user/check_email', check_email, name='api-check_email'),
+    path('user/change_password/<str:pk>',
+         ChangePasswordView.as_view(), name='api-change_password'),
+    path('user/forget_password/<str:pk>',
+         ForgetPasswordView.as_view(), name='api-forget_password'),
+]
